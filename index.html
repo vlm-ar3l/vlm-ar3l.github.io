@@ -1,61 +1,112 @@
-<h1>VLM-AR3L: Vision-Language Models for Absolute and Relative Rewards in Reinforcement Learning</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VLM-AR3L</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-<p class="authors">
-  Kuan-Chen Chen, Winston Chen, Wei-Fang Sun, Min-Chun Hu
-</p>
+<body>
+  <div class="container">
+    <div class="content-card">
 
-<p class="affiliations">
-  National Tsing Hua University &nbsp;&nbsp; NVIDIA AI Technology Center
-</p>
+    <h1>VLM-AR3L: Vision-Language Models for Absolute and Relative Rewards in Reinforcement Learning</h1>
 
-<p class="links">
-  <a href="assets/paper.pdf">Paper</a> |
-  <a href="https://github.com/xxx/VLM-AR3L">Code</a> |
-  <a href="#videos">Videos</a>
-</p>
+    <p class="authors">
+      Kuan-Chen Chen<sup>1</sup>, Winston Chen<sup>1</sup>, Wei-Fang Sun<sup>2</sup>, Min-Chun Hu<sup>1</sup>
+    </p>
 
-<section>
-  <h2>Abstract</h2>
-  <p>...</p>
-</section>
+    <p class="affiliations">
+      <sup>1</sup>National Tsing Hua University, <sup>2</sup>NVIDIA AI Technology Center
+    </p>
 
-<section>
-  <h2>Overview</h2>
-  <img src="assets/teaser.png">
-</section>
+    <p class="links">
+      <a href="assets/paper.pdf">Paper</a>
+      <a href="https://github.com/xxx/VLM-AR3L">Code</a>
+    </p>
 
-<section>
-  <h2>Method</h2>
-  <img src="assets/method.png">
-</section>
+    <h2>Abstract</h2>
+    <p>
+      Designing effective reward functions remains a major challenge in reinforcement learning (RL), particularly in open-ended environments where task goals are abstract and difficult to quantify. In this work, we present VLM-AR3L, a framework that leverages Vision-Language Models (VLMs) to provide both absolute and relative rewards for RL. VLM-AR3L interprets an agent’s visual observations in the context of a natural language task goal, and learns both absolute and relative rewards from VLM-generated preference labels. The absolute reward model predicts scalar evaluations for individual states, while the relative reward model compares consecutive observations to infer progress or regression toward the task goal. Their integration combines the stability of state-based evaluation with the robustness of comparative supervision. We evaluate VLM-AR3L across benchmarks spanning classic control, manipulation, and open-world embodied tasks, with a particular focus on Minecraft given its visual complexity and long-horizon decision-making requirements. Experimental results show that VLM-AR3L consistently outperforms prior VLM-based reward learning methods.
+    </p>
 
-<section id="videos">
-  <h2>Videos</h2>
-  <div class="video-grid">
-    <video src="assets/videos/task1.mp4" controls muted></video>
-    <video src="assets/videos/task2.mp4" controls muted></video>
-    <video src="assets/videos/task3.mp4" controls muted></video>
-  </div>
-</section>
+    <h2>VLM-AR3L Components</h2>
+    <p>
+      VLM-AR3L learns reward functions from VLM-generated preferences over visual observations. During reward model training, observation pairs are sampled from the agent's replay buffer and evaluated by a VLM according to the task goal. The resulting preference labels are used to train both an absolute reward model and a relative reward model.
+    </p>
 
-<section>
-  <h2>Experiments and Results</h2>
-  <img src="assets/results.png">
-</section>
+    <img class="main-img" src="assets/VLM-AR3L.png" alt="VLM-AR3L overview">
 
-<section>
-  <h2>VLM Preference Accuracy</h2>
-  <img src="assets/vlm_accuracy.png">
-</section>
+    <p>
+      During policy learning, the absolute reward model evaluates individual observations, while the relative reward model compares the current and previous observations to provide complementary reward signals. This design combines the stability of state-based evaluation with the robustness of comparative progress estimation.
+    </p>
 
-<section>
-  <h2>BibTeX</h2>
-  <pre>
-@inproceedings{chen2026vlmar3l,
+    <h2>Experiments and Results</h2>
+    <p>
+      We evaluate VLM-AR3L across classic control, manipulation, and open-world embodied tasks. VLM-AR3L consistently outperforms prior VLM-based reward learning methods and achieves strong performance even in long-horizon tasks where sparse rewards provide insufficient guidance.
+    </p>
+
+    <h3>Comparison to Baselines</h3>
+    <img class="main-img" src="assets/compare_baseline.png" alt="Comparison to baselines">
+
+    <h2>Visualization</h2>
+    <p>
+      Below we show policy rollouts from VLM-AR3L across different environments.
+    </p>
+
+    <div class="gif-grid">
+      <figure>
+        <img class="gif-img" src="assets/cartpole.gif" alt="CartPole">
+        <figcaption>CartPole</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/straighten_rope.gif" alt="Straighten Rope">
+        <figcaption>Straighten Rope</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/pass_water.gif" alt="Pass Water">
+        <figcaption>Pass Water</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/soccer.gif" alt="Soccer">
+        <figcaption>Soccer</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/sweep.gif" alt="Sweep">
+        <figcaption>Sweep</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/open_drawer.gif" alt="Open Drawer">
+        <figcaption>Open Drawer</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/combat_spider.gif" alt="Combat Spider">
+        <figcaption>Combat Spider</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/milk_cow.gif" alt="Milk Cow">
+        <figcaption>Milk Cow</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/shear_sheep.gif" alt="Shear Sheep">
+        <figcaption>Shear Sheep</figcaption>
+      </figure>
+      <figure>
+        <img class="gif-img" src="assets/hunt_cow.gif" alt="Hunt Cow">
+        <figcaption>Hunt Cow</figcaption>
+      </figure>
+    </div>
+
+    <h2>BibTeX</h2>
+    <pre>@inproceedings{chen2026vlmar3l,
   title={VLM-AR3L: Vision-Language Models for Absolute and Relative Rewards in Reinforcement Learning},
   author={Chen, Kuan-Chen and Chen, Winston and Sun, Wei-Fang and Hu, Min-Chun},
   booktitle={Proceedings of the International Joint Conference on Artificial Intelligence},
   year={2026}
-}
-  </pre>
-</section>
+}</pre>
+
+    </div>
+  </div>
+</body>
+</html>
