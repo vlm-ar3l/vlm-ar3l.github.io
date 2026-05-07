@@ -8,9 +8,9 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 36px 24px 72px;
+  padding: 36px 32px 72px;
 }
 
 h1 {
@@ -76,12 +76,25 @@ p {
 
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
 
-.gif-grid figure {
+.gif-row {
+  display: grid;
+  gap: 20px;
+}
+
+.row-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.row-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gif-grid figure,
+.gif-row figure {
   margin: 0;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
@@ -89,12 +102,14 @@ p {
   overflow: hidden;
 }
 
-.gif-grid img {
+.gif-grid img,
+.gif-row img {
   width: 100%;
   display: block;
 }
 
-.gif-grid figcaption {
+.gif-grid figcaption,
+.gif-row figcaption {
   padding: 12px 14px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -120,6 +135,27 @@ pre {
 
 sup {
   font-size: 12px;
+}
+
+.highlight-blue {
+  color: #507edf;
+  font-weight: 600;
+}
+
+.highlight-purple {
+  color: #b492f0;
+  font-weight: 600;
+}
+
+.highlight-combine {
+  color: #CCCCFF;
+  font-weight: 600;
+}
+
+.legend-note {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #4b5563;
 }
 
 @media (max-width: 700px) {

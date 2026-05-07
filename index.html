@@ -31,15 +31,13 @@
       Designing effective reward functions remains a major challenge in reinforcement learning (RL), particularly in open-ended environments where task goals are abstract and difficult to quantify. In this work, we present VLM-AR3L, a framework that leverages Vision-Language Models (VLMs) to provide both absolute and relative rewards for RL. VLM-AR3L interprets an agent’s visual observations in the context of a natural language task goal, and learns both absolute and relative rewards from VLM-generated preference labels. The absolute reward model predicts scalar evaluations for individual states, while the relative reward model compares consecutive observations to infer progress or regression toward the task goal. Their integration combines the stability of state-based evaluation with the robustness of comparative supervision. We evaluate VLM-AR3L across benchmarks spanning classic control, manipulation, and open-world embodied tasks, with a particular focus on Minecraft given its visual complexity and long-horizon decision-making requirements. Experimental results show that VLM-AR3L consistently outperforms prior VLM-based reward learning methods.
     </p>
 
-    <h2>VLM-AR3L Components</h2>
-    <p>
-      VLM-AR3L learns reward functions from VLM-generated preferences over visual observations. During reward model training, observation pairs are sampled from the agent's replay buffer and evaluated by a VLM according to the task goal. The resulting preference labels are used to train both an absolute reward model and a relative reward model.
-    </p>
-
+    <h2>Method</h2>
+    
     <img class="main-img" src="assets/VLM-AR3L.png" alt="VLM-AR3L overview">
-
     <p>
-      During policy learning, the absolute reward model evaluates individual observations, while the relative reward model compares the current and previous observations to provide complementary reward signals. This design combines the stability of state-based evaluation with the robustness of comparative progress estimation.
+      VLM-AR3L learns reward functions from VLM-generated preferences over visual observations. <span class="highlight-blue">During reward model training</span>, observation pairs are sampled from the agent's replay buffer and evaluated by a VLM according to the task goal. The resulting preference labels are used to train both an absolute reward model and a relative reward model.
+    
+      <span class="highlight-purple">During policy learning</span>, the absolute reward model evaluates individual observations, while the relative reward model compares the current and previous observations to provide complementary reward signals. This design combines the stability of state-based evaluation with the robustness of comparative progress estimation.
     </p>
 
     <h2>Experiments and Results</h2>
@@ -52,50 +50,58 @@
 
     <h2>Visualization</h2>
     <p>
-      Below we show policy rollouts from VLM-AR3L across different environments.
+      Below we show policy and reward rollouts from VLM-AR3L across different environments.
+    
+      In the plots, <span class="highlight-blue">absolute reward</span> is blue, <span class="highlight-purple">relative</span> is purple, and <span class="highlight-combine">combine</span>.
     </p>
 
     <div class="gif-grid">
-      <figure>
-        <img class="gif-img" src="assets/cartpole.gif" alt="CartPole">
-        <figcaption>CartPole</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/straighten_rope.gif" alt="Straighten Rope">
-        <figcaption>Straighten Rope</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/pass_water.gif" alt="Pass Water">
-        <figcaption>Pass Water</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/soccer.gif" alt="Soccer">
-        <figcaption>Soccer</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/sweep.gif" alt="Sweep">
-        <figcaption>Sweep</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/open_drawer.gif" alt="Open Drawer">
-        <figcaption>Open Drawer</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/combat_spider.gif" alt="Combat Spider">
-        <figcaption>Combat Spider</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/milk_cow.gif" alt="Milk Cow">
-        <figcaption>Milk Cow</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/shear_sheep.gif" alt="Shear Sheep">
-        <figcaption>Shear Sheep</figcaption>
-      </figure>
-      <figure>
-        <img class="gif-img" src="assets/hunt_cow.gif" alt="Hunt Cow">
-        <figcaption>Hunt Cow</figcaption>
-      </figure>
+      <div class="gif-row row-3">
+        <figure>
+          <img class="gif-img" src="assets/cartpole.gif" alt="CartPole">
+          <figcaption>CartPole</figcaption>
+        </figure>
+        <figure>
+          <img class="gif-img" src="assets/straighten_rope.gif" alt="Straighten Rope">
+          <figcaption>Straighten Rope</figcaption>
+        </figure>
+        <figure>
+          <img class="gif-img" src="assets/pass_water.gif" alt="Pass Water">
+          <figcaption>Pass Water</figcaption>
+        </figure>
+      </div>
+      <div class="gif-row row-3">
+        <figure>
+          <img class="gif-img" src="assets/soccer.gif" alt="Soccer">
+          <figcaption>Soccer</figcaption>
+        </figure>
+        <figure>
+          <img class="gif-img" src="assets/sweep.gif" alt="Sweep">
+          <figcaption>Sweep</figcaption>
+        </figure>
+        <figure>
+          <img class="gif-img" src="assets/open_drawer.gif" alt="Open Drawer">
+          <figcaption>Open Drawer</figcaption>
+        </figure>
+      </div>
+      <div class="gif-row row-4">
+        <figure>
+          <img class="gif-img" src="assets/combat_spider.gif" alt="Combat Spider">
+          <figcaption>Combat Spider</figcaption>
+        </figure>
+        <figure>
+          <img class="gif-img" src="assets/milk_cow.gif" alt="Milk Cow">
+          <figcaption>Milk Cow</figcaption>
+        </figure>
+        <figure>
+          <img class="gif-img" src="assets/shear_sheep.gif" alt="Shear Sheep">
+          <figcaption>Shear Sheep</figcaption>
+        </figure>
+        <figure>
+          <img class="gif-img" src="assets/hunt_cow.gif" alt="Hunt Cow">
+          <figcaption>Hunt Cow</figcaption>
+        </figure>
+      </div>
     </div>
 
     <h2>BibTeX</h2>
