@@ -8,6 +8,18 @@
 </head>
 
 <body>
+  <div class="top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-title">VLM-AR3L</div>
+      <nav class="top-bar-nav">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#visualization">Visualization</a>
+        <a href="#bibtex">BibTeX</a>
+      </nav>
+    </div>
+  </div>
   <div class="container">
     <div class="content-card">
 
@@ -15,11 +27,12 @@
     <div class="announcement">IJCAI 2026</div>
 
     <p class="authors">
-      Kuan-Chen Chen<sup>1</sup>, Winston Chen<sup>1</sup>, Wei-Fang Sun<sup>2</sup>, Min-Chun Hu<sup>1</sup>
+      Kuan-Chen Chen<sup>1</sup>,&nbsp;&nbsp;Winston Chen<sup>1</sup>,&nbsp;&nbsp;Wei-Fang Sun<sup>2</sup>,&nbsp;&nbsp;Min-Chun Hu<sup>1</sup>
     </p>
 
     <p class="affiliations">
-      <sup>1</sup>National Tsing Hua University, <sup>2</sup>NVIDIA AI Technology Center
+      <sup>1</sup>Department of Computer Science, National Tsing Hua University<br>
+      <sup>2</sup>NVIDIA AI Technology Center
     </p>
 
     <p class="links">
@@ -33,12 +46,15 @@
       </a>
     </p>
 
-    <h2>Abstract</h2>
-    <p>
-      Designing effective reward functions remains a major challenge in reinforcement learning (RL), particularly in open-ended environments where task goals are abstract and difficult to quantify. In this work, we present VLM-AR3L, a framework that leverages Vision-Language Models (VLMs) to provide both absolute and relative rewards for RL. VLM-AR3L interprets an agent’s visual observations in the context of a natural language task goal, and learns both absolute and relative rewards from VLM-generated preference labels. The absolute reward model predicts scalar evaluations for individual states, while the relative reward model compares consecutive observations to infer progress or regression toward the task goal. Their integration combines the stability of state-based evaluation with the robustness of comparative supervision. We evaluate VLM-AR3L across benchmarks spanning classic control, manipulation, and open-world embodied tasks, with a particular focus on Minecraft given its visual complexity and long-horizon decision-making requirements. Experimental results show that VLM-AR3L consistently outperforms prior VLM-based reward learning methods.
-    </p>
+    <section id="abstract" class="section-block">
+      <h2>Abstract</h2>
+      <p>
+        Designing effective reward functions remains a major challenge in reinforcement learning (RL), particularly in open-ended environments where task goals are abstract and difficult to quantify. In this work, we present VLM-AR3L, a framework that leverages Vision-Language Models (VLMs) to provide both absolute and relative rewards for RL. VLM-AR3L interprets an agent’s visual observations in the context of a natural language task goal, and learns both absolute and relative rewards from VLM-generated preference labels. The absolute reward model predicts scalar evaluations for individual states, while the relative reward model compares consecutive observations to infer progress or regression toward the task goal. Their integration combines the stability of state-based evaluation with the robustness of comparative supervision. We evaluate VLM-AR3L across benchmarks spanning classic control, manipulation, and open-world embodied tasks, with a particular focus on Minecraft given its visual complexity and long-horizon decision-making requirements. Experimental results show that VLM-AR3L consistently outperforms prior VLM-based reward learning methods.
+      </p>
+    </section>
 
-    <h2>Method</h2>
+    <section id="method" class="section-block">
+      <h2>Method</h2>
     
     <img class="main-img" src="assets/VLM-AR3L.png" alt="VLM-AR3L overview">
     <p>
@@ -46,16 +62,20 @@
     
       <span class="highlight-purple">During policy learning</span>, the absolute reward model evaluates individual observations, while the relative reward model compares the current and previous observations to provide complementary reward signals. This design combines the stability of state-based evaluation with the robustness of comparative progress estimation.
     </p>
+    </section>
 
-    <h2>Experiments and Results</h2>
+    <section id="experiments" class="section-block">
+      <h2>Experiments and Results</h2>
     <p>
       We evaluate VLM-AR3L across classic control, manipulation, and open-world embodied tasks. VLM-AR3L consistently outperforms prior VLM-based reward learning methods and achieves strong performance even in long-horizon tasks where sparse rewards provide insufficient guidance.
     </p>
 
     <h3>Comparison to Baselines</h3>
     <img class="main-img" src="assets/compare_baseline.png" alt="Comparison to baselines">
+    </section>
 
-    <h2>Visualization</h2>
+    <section id="visualization" class="section-block">
+      <h2>Visualization</h2>
     <p>
       Below we show policy and reward rollouts from VLM-AR3L across different environments.
     
@@ -110,14 +130,17 @@
         </figure>
       </div>
     </div>
+    </section>
 
-    <h2>BibTeX</h2>
-    <pre>@inproceedings{chen2026vlmar3l,
+    <section id="bibtex" class="section-block">
+      <h2>BibTeX</h2>
+      <pre>@inproceedings{chen2026vlmar3l,
   title={VLM-AR3L: Vision-Language Models for Absolute and Relative Rewards in Reinforcement Learning},
   author={Chen, Kuan-Chen and Chen, Winston and Sun, Wei-Fang and Hu, Min-Chun},
   booktitle={Proceedings of the International Joint Conference on Artificial Intelligence},
   year={2026}
 }</pre>
+    </section>
 
     </div>
   </div>
