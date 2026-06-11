@@ -129,6 +129,8 @@ h1 {
   vertical-align: middle;
 }
 
+.link{color:#2c8df4;text-decoration:underline;text-underline-offset:3px}
+
 .links a:hover,
 .button-link:hover {
   background: #1f2937;
